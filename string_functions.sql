@@ -89,3 +89,21 @@ substring(email,1,2) || repeat('*',position('@'IN email)-4)|| substring(email,po
 substring(email,1,position('@'IN email)-1) as personaname
 from employee
 
+insert into mayuri.employee values(202,'Sarika',2,'Female',500,3,'rang@sbi.co.in');
+insert into mayuri.employee values(203,'Sarika1',2,'Female',500,3,'rang1@sbi.co.in');
+insert into mayuri.employee values(204,'Sarika2',2,'Female',500,3,'rang2@sbi.co.in');
+
+
+select email from employee;
+
+select email as original , replace(email,'.com','.net') as changedemail 
+from employee
+
+
+select email, substring(email, 1,1)|| repeat('*',3)||substring(email,2,length(email)) as change,
+replace (email, '@','#') as new_email,
+CASE WHEN substring(email, position('@'IN email)+1, length(email)-position('@'IN email)) = 'gmail.com'
+THEN 'MATCH'
+ELSE 'OFFICE EMAIL ID'
+END as chcek
+from employee
